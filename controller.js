@@ -1,5 +1,3 @@
-"use strict";
-
 const dayName = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
 const daysCount = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 
@@ -15,6 +13,7 @@ const currentInfo = {
 const init = function () {
   const dateData = new Date();
   updateCurrentInfo(dateData);
+  insertCalendarEmptySpace();
 };
 
 const updateCurrentInfo = function (dateData) {
@@ -38,7 +37,6 @@ const insertCalendarEmptySpace = function () {
   const rowIdx = calendar.insertRow();
   for (let i = 0; i < currentInfo.firstDayofMonth; i++) {
     const cell = rowIdx.insertCell();
-    cell.innerHTML = "HI";
   }
 };
 
@@ -62,7 +60,6 @@ const insertCalendarDates = function () {
 
 init();
 console.log(currentInfo);
-insertCalendarEmptySpace();
 insertCalendarDates();
 
 // for (let i = 0; i < 6; i++) {

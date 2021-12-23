@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <script defer src="script.js"></script>
+    <script type="module" defer src="controller.js"></script>
   </head>
   <body>
     <h1 class="calendar-title">Calendar</h1>
@@ -29,8 +29,20 @@
       <tbody id="calendar"></tbody>
     </table>
 
-    <button class="btn left-btn"></button>
+    <button class="btn left-btn">
+      <ion-icon class="left-btn-icon" name="arrow-back-outline"></ion-icon>
+    </button>
     <table></table>
-    <button class="btn right-btn"></button>
+    <button class="btn right-btn">
+      <ion-icon class="right-btn-icon" name="arrow-forward-outline"></ion-icon>
+    </button>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>
   </body>
 </html>
