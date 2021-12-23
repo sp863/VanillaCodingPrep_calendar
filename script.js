@@ -34,20 +34,36 @@ const updateCurrentInfo = function (dateData) {
   ).getDay();
 };
 
-const renderCalendarEmptySpace = function () {
+const insertCalendarEmptySpace = function () {
   const rowIdx = calendar.insertRow();
-  console.log(rowIdx);
   for (let i = 0; i < currentInfo.firstDayofMonth; i++) {
     const cell = rowIdx.insertCell();
     cell.innerHTML = "HI";
   }
 };
 
-const renderCalendarDates = function () {};
+const insertCalendarDates = function () {
+  let date = 1;
+  let rowCount = 0;
+  let day = currentInfo.firstDayofMonth;
+  while (date <= currentInfo.lastDate) {
+    const cell = calendar.rows[rowCount].insertCell();
+    cell.innerHTML = date;
+    cell.setAttribute("class", `date-${date}`);
+    date++;
+    day++;
+    if (day > 6) {
+      day = 0;
+      calendar.insertRow();
+      rowCount++;
+    }
+  }
+};
 
 init();
 console.log(currentInfo);
-renderCalendarEmptySpace();
+insertCalendarEmptySpace();
+insertCalendarDates();
 
 // for (let i = 0; i < 6; i++) {
 //   const row = calendar.insertRow();
