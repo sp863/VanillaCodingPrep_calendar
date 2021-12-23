@@ -14,6 +14,10 @@ const currentInfo = {
 
 const init = function () {
   const dateData = new Date();
+  updateCurrentInfo(dateData);
+};
+
+const updateCurrentInfo = function (dateData) {
   currentInfo.year = dateData.getFullYear();
   currentInfo.month = dateData.getMonth();
   currentInfo.todayDate = dateData.getDate();
@@ -23,14 +27,27 @@ const init = function () {
     0
   ).getDate();
   currentInfo.day = dateData.getDay();
-  currentInfo.firstDay = new Date(
+  currentInfo.firstDayofMonth = new Date(
     currentInfo.year,
     currentInfo.month,
     1
   ).getDay();
 };
+
+const renderCalendarEmptySpace = function () {
+  const rowIdx = calendar.insertRow();
+  console.log(rowIdx);
+  for (let i = 0; i < currentInfo.firstDayofMonth; i++) {
+    const cell = rowIdx.insertCell();
+    cell.innerHTML = "HI";
+  }
+};
+
+const renderCalendarDates = function () {};
+
 init();
 console.log(currentInfo);
+renderCalendarEmptySpace();
 
 // for (let i = 0; i < 6; i++) {
 //   const row = calendar.insertRow();
