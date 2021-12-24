@@ -12,10 +12,10 @@ const controlCalendar = function (newDateData) {
   view.renderHeaderInfo(model.currentInfo);
   view.insertCalendarEmptySpace(model.currentInfo);
   view.insertCalendarDates(model.currentInfo);
+  view.insertPreMonthDates(model.currentInfo);
+  view.insertPostMonthDates(model.currentInfo);
 };
-
-const controlShowDate = function () {};
 
 init();
 view.addHandlerMoveMonth(controlCalendar, model.currentInfo);
-view.addHandlerShowDate(controlShowDate, model.currentInfo);
+view.addHandlerShowDate(model.currentInfo);

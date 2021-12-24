@@ -46,7 +46,7 @@ class CalendarView {
     });
   }
 
-  addHandlerShowDate(handler, currentInfo) {
+  addHandlerShowDate(currentInfo) {
     const headerDate = this.#header.querySelector(".header-date");
     const headerDay = this.#header.querySelector(".header-day");
     const dayName = this.#dayName.slice();
@@ -107,6 +107,26 @@ class CalendarView {
         rowCount++;
       }
     }
+  }
+
+  insertPreMonthDates(currentInfo) {
+    const firstRow = this.#calendar.rows[0];
+    let dateCount = 0;
+    for (let i = currentInfo.firstDayofMonth - 1; i >= 0; i--) {
+      const targetDate = new Date(
+        currentInfo.year,
+        currentInfo.month,
+        dateCount
+      ).getDate();
+      firstRow.cells[i].innerHTML = targetDate;
+      firstRow.cells[i].setAttribute("class", "pre-date");
+      dateCount--;
+    }
+  }
+
+  insertPostMonthDates(currentInfo) {
+    const lastRow = this.#calendar.rows[this.#calendar.rows.length - 1];
+    console.log(lastRow);
   }
 }
 
