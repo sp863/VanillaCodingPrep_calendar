@@ -5,6 +5,7 @@ export const currentInfo = {
   lastDate: 0,
   day: 0,
   firstDayofMonth: 0,
+  lastDayOfMonth: 0,
 };
 
 export const updateCurrentInfo = function (dateData) {
@@ -21,11 +22,11 @@ export const updateCurrentInfo = function (dateData) {
     currentInfo.month,
     1
   ).getDay();
+  currentInfo.lastDayOfMonth = new Date(
+    currentInfo.year,
+    currentInfo.month,
+    currentInfo.lastDate
+  ).getDay();
 
   console.log(currentInfo);
-
-  console.log(new Date(currentInfo.year, currentInfo.month, 0));
-  console.log(new Date(currentInfo.year, currentInfo.month, -1));
-  console.log(new Date(currentInfo.year, currentInfo.month, -2));
-  console.log(new Date(currentInfo.year, currentInfo.month, -3));
 };

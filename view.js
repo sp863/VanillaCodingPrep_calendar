@@ -126,7 +126,19 @@ class CalendarView {
 
   insertPostMonthDates(currentInfo) {
     const lastRow = this.#calendar.rows[this.#calendar.rows.length - 1];
-    console.log(lastRow);
+    const cellCount = 6 - currentInfo.lastDayOfMonth;
+    let dateCount = 1;
+    for (let i = 0; i < cellCount; i++) {
+      const targetDate = new Date(
+        currentInfo.year,
+        currentInfo.month + 1,
+        dateCount
+      ).getDate();
+      const cell = lastRow.insertCell();
+      cell.innerHTML = targetDate;
+      cell.setAttribute("class", "post-date");
+      dateCount++;
+    }
   }
 }
 
