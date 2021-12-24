@@ -18,4 +18,4 @@ const controlShowDate = function () {};
 
 init();
 view.addHandlerMoveMonth(controlCalendar, model.currentInfo);
-// view.addHandlerShowDate(controlShowDate);
+view.addHandlerShowDate(controlShowDate, model.currentInfo);

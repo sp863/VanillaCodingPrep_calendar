@@ -3,9 +3,6 @@ class CalendarView {
   #header = document.querySelector(".calendar-header");
   #rightButton = document.querySelector(".right-btn");
   #leftButton = document.querySelector(".left-btn");
-  #datePicked = document.querySelectorAll("#td");
-
-  // #date = document.querySelector();
   #dayName = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
   #monthName = [
     "JAN",
@@ -36,7 +33,7 @@ class CalendarView {
       } else {
         month -= 1;
       }
-      handler(new Date(year, month, 1));
+      handler(new Date(year, month));
     });
     this.#rightButton.addEventListener("click", function (e) {
       if (month === 11) {
@@ -45,35 +42,43 @@ class CalendarView {
       } else {
         month += 1;
       }
-      handler(new Date(year, month, 1));
+      handler(new Date(year, month));
     });
   }
 
-  addHandlerShowDate(handler) {
-    this.#calendar = addEventListener("click", function (e) {
+  addHandlerShowDate(handler, currentInfo) {
+    const headerDate = this.#header.querySelector(".header-date");
+    const headerDay = this.#header.querySelector(".header-day");
+    const dayName = this.#dayName.slice();
+    this.#calendar.addEventListener("click", function (e) {
       const datePicked = e.target;
-      if (datePicked.textContent === "") return;
-      // this.#header.querySelector(".header-date").textContent =
-      //   datePicked.textContent;
-      console.log(datePicked.textContent);
+      if (datePicked.tagName !== "TD" || datePicked.textContent === "") return;
+      const tempDay = new Date(
+        currentInfo.year,
+        currentInfo.month,
+        +datePicked.textContent
+      ).getDay();
+      headerDate.textContent = datePicked.textContent;
+      headerDay.textContent = dayName[tempDay];
     });
   }
 
   renderHeaderInfo(currentInfo) {
-    const todayDate = new Date();
+    const today = currentInfo.today;
     const headerDay = this.#header.querySelector(".header-day");
     const headerMonth = this.#header.querySelector(".header-month");
     const headerDate = this.#header.querySelector(".header-date");
 
     if (
-      currentInfo.year === todayDate.getFullYear() &&
-      currentInfo.month === todayDate.getMonth()
+      currentInfo.year === today.getFullYear() &&
+      currentInfo.month === today.getMonth()
     ) {
-      headerDate.textContent = `${todayDate.getDate()}`;
+      headerDate.textContent = `${today.getDate()}`;
+      headerDay.textContent = this.#dayName[today.getDay()];
     } else {
       headerDate.textContent = "1";
+      headerDay.textContent = this.#dayName[currentInfo.day];
     }
-    headerDay.textContent = this.#dayName[currentInfo.day];
     headerMonth.textContent = `${this.#monthName[currentInfo.month]} ${
       currentInfo.year
     }`;
