@@ -9,10 +9,10 @@
   </head>
   <body>
     <h1 class="calendar-title">Calendar</h1>
-    <div class="current-date">
-      <p>SUN</p>
-      <p>19</p>
-      <p>DEC 2021</p>
+    <div class="calendar-header">
+      <p class="header-day">SUN</p>
+      <p class="header-date">19</p>
+      <p class="header-month">DEC 2021</p>
     </div>
     <table>
       <thead>
@@ -29,13 +29,17 @@
       <tbody id="calendar"></tbody>
     </table>
 
-    <button class="btn left-btn">
-      <ion-icon class="left-btn-icon" name="arrow-back-outline"></ion-icon>
-    </button>
-    <table></table>
-    <button class="btn right-btn">
-      <ion-icon class="right-btn-icon" name="arrow-forward-outline"></ion-icon>
-    </button>
+    <div class="btn">
+      <button class="left-btn">
+        <ion-icon class="left-btn-icon" name="arrow-back-outline"></ion-icon>
+      </button>
+      <button class="right-btn">
+        <ion-icon
+          class="right-btn-icon"
+          name="arrow-forward-outline"
+        ></ion-icon>
+      </button>
+    </div>
     <script
       type="module"
       src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
