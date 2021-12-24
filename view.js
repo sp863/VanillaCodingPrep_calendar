@@ -49,17 +49,37 @@ class CalendarView {
   addHandlerShowDate(currentInfo) {
     const headerDate = this.#header.querySelector(".header-date");
     const headerDay = this.#header.querySelector(".header-day");
+    const headerMonth = this.#header.querySelector(".header-month");
+
+    const monthName = this.#monthName.slice();
     const dayName = this.#dayName.slice();
     this.#calendar.addEventListener("click", function (e) {
       const datePicked = e.target;
-      if (datePicked.tagName !== "TD" || datePicked.textContent === "") return;
-      const tempDay = new Date(
-        currentInfo.year,
-        currentInfo.month,
-        +datePicked.textContent
-      ).getDay();
-      headerDate.textContent = datePicked.textContent;
-      headerDay.textContent = dayName[tempDay];
+      if (datePicked.tagName !== "TD") return;
+      let year = currentInfo.year;
+      let month = currentInfo.month;
+      let date = +datePicked.textContent;
+      if (datePicked.className === "pre-date") {
+        if (month === 0) {
+          year--;
+          month = 11;
+        } else {
+          month--;
+        }
+      } else if (datePicked.className === "post-date") {
+        if (month === 12) {
+          year++;
+          month = 0;
+        } else {
+          month++;
+        }
+      }
+      const updatedDate = new Date(year, month, date);
+      headerDay.textContent = dayName[updatedDate.getDay()];
+      headerDate.textContent = updatedDate.getDate();
+      headerMonth.textContent = `${
+        monthName[updatedDate.getMonth()]
+      } ${updatedDate.getFullYear()}`;
     });
   }
 
