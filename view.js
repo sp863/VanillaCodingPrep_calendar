@@ -118,6 +118,7 @@ class CalendarView {
     while (date <= currentInfo.lastDate) {
       const cell = this.#calendar.rows[rowCount].insertCell();
       cell.innerHTML = `<span class='date-${date}'>${date}</span>`;
+      this.renderTodayDate(date, currentInfo, cell);
       date++;
       day++;
       if (day > 6) {
@@ -126,6 +127,14 @@ class CalendarView {
         rowCount++;
       }
     }
+  }
+
+  renderTodayDate(date, currentInfo, cell) {
+    const isTodayDate = currentInfo.today.getDate() === date;
+    const isTodayMonth = currentInfo.today.getMonth() === currentInfo.month;
+    const isTodayYear = currentInfo.today.getFullYear() === currentInfo.year;
+    if (!isTodayDate || !isTodayMonth || !isTodayYear) return;
+    cell.firstChild.classList.add("today-effect");
   }
 
   insertPreMonthDates(currentInfo) {
