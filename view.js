@@ -55,7 +55,7 @@ class CalendarView {
     const dayName = this.#dayName.slice();
     this.#calendar.addEventListener("click", function (e) {
       const datePicked = e.target;
-      if (datePicked.tagName !== "TD") return;
+      if (datePicked.tagName !== "SPAN") return;
       let year = currentInfo.year;
       let month = currentInfo.month;
       let date = +datePicked.textContent;
@@ -117,8 +117,7 @@ class CalendarView {
     let day = currentInfo.firstDayofMonth;
     while (date <= currentInfo.lastDate) {
       const cell = this.#calendar.rows[rowCount].insertCell();
-      cell.innerHTML = date;
-      cell.setAttribute("class", `date-${date}`);
+      cell.innerHTML = `<span class='date-${date}'>${date}</span>`;
       date++;
       day++;
       if (day > 6) {
@@ -138,8 +137,9 @@ class CalendarView {
         currentInfo.month,
         dateCount
       ).getDate();
-      firstRow.cells[i].innerHTML = targetDate;
-      firstRow.cells[i].setAttribute("class", "pre-date");
+      firstRow.cells[
+        i
+      ].innerHTML = `<span class='pre-date'>${targetDate}</span>`;
       dateCount--;
     }
   }
@@ -155,8 +155,7 @@ class CalendarView {
         dateCount
       ).getDate();
       const cell = lastRow.insertCell();
-      cell.innerHTML = targetDate;
-      cell.setAttribute("class", "post-date");
+      cell.innerHTML = `<span class='post-date'>${targetDate}</span>`;
       dateCount++;
     }
   }

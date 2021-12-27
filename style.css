@@ -20,7 +20,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 5rem;
+  gap: 3rem;
 
   /* background-image: url("background.jpg");
   background-position: center;
@@ -33,12 +33,62 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 5rem;
+  gap: 2rem;
 }
 
-.calendar-header {
-  display: fexl;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+.calendar-title {
+  font-family: "Shizuru", cursive;
+  font-size: 8rem;
+}
+
+.header-day,
+.header-date {
+  font-size: 4rem;
+  font-weight: 700;
+}
+.header-month {
+  font-size: 2.5rem;
+}
+
+table {
+  width: 60rem;
+  height: 43rem;
+  border: 1px solid #444;
+  border-collapse: collapse;
+  border-radius: 10px;
+  border-style: hidden;
+  box-shadow: 0 0 0 1px #000;
+}
+
+th,
+td {
+  border: 1px solid #444;
+}
+
+th {
+  width: 10rem;
+  padding: 1rem;
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+td {
+  font-size: 1.8rem;
+  font-weight: 700;
+  text-align: right;
+  vertical-align: top;
+  padding: 0.5rem;
+}
+
+span {
+  display: inline-block;
+  text-align: center;
+  height: 3.5rem;
+  width: 3.5rem;
+  line-height: 3.5rem;
+  border-radius: 50%;
+}
+
+span:hover {
+  cursor: default;
 }
