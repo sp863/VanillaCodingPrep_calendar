@@ -1,6 +1,6 @@
 class CalendarView {
   #calendar = document.getElementById("calendar");
-  #header = document.querySelector(".calendar-header");
+  #header = document.querySelector(".header-container");
   #rightButton = document.querySelector(".right-btn");
   #leftButton = document.querySelector(".left-btn");
   #dayName = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
