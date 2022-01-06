@@ -25,4 +25,4 @@
 ### Resources
 
 - [참고 달력 사이트](https://vanilla-coding-calendar.netlify.app/)
-- [바닐라코딩 사전학습 가이드](https://book.vanillacoding.co/starter-kit/step-1/html-css/practice)
+- [바닐라코딩 사전학습 가이드](https://book.vanillacoding.co/starter-kit/step-6/calendar)
